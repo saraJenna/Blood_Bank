@@ -4,7 +4,16 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+//to take user input
+<form action="/FormHandler" method="get">
+    <label for="id">Enter Id:</label>
+    <input id="id" type="number" name="id" value="" required />
+    <br />
+    <label for="name">Enter Name:</label>
+    <input id="name" type="text" name="name" value="" required />
+    <br />
+    <label for="image">Enter Image URL:</label>
+    <input  id="image" type="text" name="image" value="" required />
+<br />
+    <input type="submit" name="submit" value="submit" />
+</form>

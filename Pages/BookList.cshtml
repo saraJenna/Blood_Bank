@@ -1,0 +1,22 @@
+﻿@page
+@model ead_3_.Pages.BookListModel
+@{
+    ViewData["Title"] = "Book List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="row">
+    @foreach (var book in Model.Books)
+    {
+        <div id="bookContainer" class="col-lg-3 col-md-6 col-sm-12">
+            <img id="bookImage" src="@book.book_image" alt="@book.book_name" />
+            <span id="bookTitle">@book.book_name</span>
+            <span id="bookPrice">coming soon</span>
+            <span><input id="bookQuantity" type="number" name="quantity" value="" placeholder="0" /></span>
+            <span id="cartButton"><button>Add to cart</button></span>
+        </div>
+    }
+</div>

@@ -1,5 +1,8 @@
+using ead_3_.models;
+using ead_3_.services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ead_3_
@@ -24,6 +28,8 @@ namespace ead_3_
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddControllers();
+            services.AddTransient<JsonFileBookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +56,14 @@ namespace ead_3_
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
+              /*  endpoints.MapGet("/BookRecord", (Context) =>
+                 {
+                     IEnumerable<Book> BookRecord = app.ApplicationServices.GetService<JsonFileBookService>().getBooksData();
+                     var JsonBookRecord = JsonSerializer.Serialize<IEnumerable<Book>>(BookRecord);
+                     return Context.Response.WriteAsync(JsonBookRecord);
+                 });*/
             });
         }
-    }
+    }  
 }
